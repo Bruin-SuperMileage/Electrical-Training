@@ -5,9 +5,9 @@
 // Correction in the lecture video: we provided a table for 
 // analog inputs -> expected output, but provided the wrong values
 // analog inputs should be the following: 0 - 341, 342 - 682, and 683 - 1023
-int led_pin1 = 10;
-int led_pin2 = 5;
-int led_pin3 = 3;
+int led_pin1 = 5;
+int led_pin2 = 3;
+int led_pin3 = 10;
 
 
 void setup() {
