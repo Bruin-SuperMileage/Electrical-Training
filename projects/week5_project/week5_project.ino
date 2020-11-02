@@ -15,11 +15,11 @@ void loop() {
   // ================================================
   // DO NOT TOUCH THIS SECTION OF CODE
   // Implementation of state machine with software button debouncing
-  int button_press = digitalRead(3); // Reads HIGH if pressed, LOW if not pressed
+  int button_press = digitalRead(3); // Reads LOW if pressed, HIGH if not pressed
   int time_elapsed = millis() - time_start;
   // Change states only if 1 second has passed (this prevents multiple state changes from one press)
   // Long presses can change states multiple times if held down for more than one second.
-  if (button_press == HIGH && time_elapsed >= 1000) {
+  if (button_press == LOW && time_elapsed >= 1000) {
     time_start = millis();
     if (state == 0) {
       state = 1;
