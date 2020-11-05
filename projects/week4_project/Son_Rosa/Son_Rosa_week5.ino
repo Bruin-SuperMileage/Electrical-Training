@@ -1,4 +1,4 @@
-//Rosa Son 
+
 // These variables are used for your state machine
 int time_start = 0;
 int state = 0;
