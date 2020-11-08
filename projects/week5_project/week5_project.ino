@@ -12,7 +12,7 @@ void setup() {
   pinMode(10, OUTPUT);
   pinMode(12, OUTPUT);
   pinMode(13, OUTPUT);
-  myservo.attach(9);  
+  myservo.attach(9);  //from the sample code 
 
 void loop() { 
   // ================================================
@@ -54,5 +54,4 @@ void loop() {
     Serial.println("The state code already written is to avoid using a debouncing circuit");
     Serial.println("The reason we didn't make one is because your kit does not have a capacitor");
   }
-
 }
