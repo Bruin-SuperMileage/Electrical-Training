@@ -47,12 +47,14 @@ int buttonPin = 3;
 void state_change()
 {
   //TODO: switch the state of which reading to display
+  //state can be set to true or false
 }
 
 void setup() {
 
   
   //TODO: attach an interrupt to change state when button changes from low to high
+  // Use state_change for ISR
   
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
@@ -64,17 +66,14 @@ void setup() {
 void loop() {
 
   
-  //Check if button pressed 
   lcd.setCursor(0,0);
 
   //Read temperature and humidity
   //TODO: Read in the temperature and humidity from the sensor
 
 
-  //Display temperature if true and humidity otherwise
+  //TODO: Depending on the state variable, 
+  //print Temperature = value of temperature or print Humidity = value of humidity reading to LCD screen
   
-  //TODO: Print Temperature = value of temperature reading to LCD screen based on state
-  
-  //TODO: Print Humidity = value of humidity reading to LCD screen based on state
   delay(1000);
 }
