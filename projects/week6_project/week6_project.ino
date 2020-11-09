@@ -72,13 +72,9 @@ void loop() {
 
 
   //Display temperature if true and humidity otherwise
-  if(state)
-  {
-    //TODO: Print Temperature = value of temperature reading to LCD screen
-  }
-  else
-  {
-    //TODO: Print Humidity = value of humidity reading to LCD screen
-  }
+  
+  //TODO: Print Temperature = value of temperature reading to LCD screen based on state
+  
+  //TODO: Print Humidity = value of humidity reading to LCD screen based on state
   delay(1000);
 }
