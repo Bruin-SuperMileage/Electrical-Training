@@ -8,7 +8,10 @@ void setup() {
   Serial.begin(9600);
   pinMode(3,INPUT);
 
-  
+  pinMode(A0, INPUT);  // potentiometer
+  pinMode(12, OUTPUT); // Green LED
+  pinMode(13, OUTPUT); // Red LED
+  pinMode(9, OUTPUT);  // PWM
 }
 
 void loop() { 
@@ -38,13 +41,18 @@ void loop() {
   //       The conditional statements are written for you.
   if (state == 0) {
     // TODO: Things that should happen if the state is "off"
-
+    digitalWrite(13, LOW);
+    digitalWrite(12, HIGH);
+    int pwm = map(analogRead(A0), 0, 1023, 0, 255);
+    analogWrite(9, pwm);
     
   }
 
   else if (state == 1) {
     // TODO: Things that should happen if the state is "on"
-
+    digitalWrite(13, HIGH);
+    digitalWrite(12, LOW);
+    analogWrite(9, 0);
     
   }
 
