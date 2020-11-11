@@ -44,7 +44,8 @@ int buttonPin = 3;
 void state_change()
 {
   //TODO: switch the state of which reading to display
-  //state can be set to true or false
+  //state can be set to true or false'
+  state = !state;
 }
 
 void setup() {
@@ -52,6 +53,8 @@ void setup() {
   
   //TODO: attach an interrupt to change state when button changes from low to high
   // Use state_change for ISR
+  pinMode(3, INPUT);
+  attachInterrupt(digitalPinToInterrupt(3), state_change, RISING);
   
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
@@ -67,10 +70,24 @@ void loop() {
 
   //Read temperature and humidity
   //TODO: Read in the temperature and humidity from the sensor
-
+  DHT.read11(DHT11_PIN);
+  long temp = DHT.temperature;
+  long hum = DHT.humidity;
 
   //TODO: Depending on the state variable, 
   //print Temperature = value of temperature or print Humidity = value of humidity reading to LCD screen
+  if(state && constrain(hum, -500, 500) == hum){
+    lcd.clear();
+    lcd.print("HUMIDITY");
+    lcd.setCursor(0,1);
+    lcd.print(hum);
+  }
+  else if(!state && constrain(temp, -500, 500) == temp){
+    lcd.clear();
+    lcd.print("TEMPERATURE");
+    lcd.setCursor(0,1);
+    lcd.print(temp);
+  }
   
   delay(1000);
 }
