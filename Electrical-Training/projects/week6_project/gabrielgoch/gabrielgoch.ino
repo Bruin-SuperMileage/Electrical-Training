@@ -68,8 +68,6 @@ void loop() {
     DHT.read11(DHT11_PIN);
     long temp = DHT.temperature;
     long hum = DHT.humidity;
-
-  
   
     //If button is pressed state is changed
     state_change();
@@ -80,13 +78,14 @@ void loop() {
     {
       if (state == true)
       {
+     
         lcd.clear();
-        lcd.print(temp);
+        lcd.print(String("Temperature = ") + String(temp));
       }
       else if (state == false)
       {
         lcd.clear();
-        lcd.print(hum);
+        lcd.print(String("Humidity = ") + String(hum));
       }
       else
       {
