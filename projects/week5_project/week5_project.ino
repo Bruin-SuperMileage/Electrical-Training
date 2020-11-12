@@ -6,7 +6,11 @@ void setup() {
   // TODO: Initialize pins for potentiometer, 2 LEDs (PWM is optional), 
   //       and transistor control (PWM). Please use D3 as button.
   Serial.begin(9600);
-  pinMode(3,INPUT);
+  pinMode(3,INPUT); // Button (already included)
+  pinMode(5, OUTPUT); // LED 1 - green
+  pinMode(6, OUTPUT); // LED 2 - red
+  pinMode(9, OUTPUT); // Motor
+  pinMode(A0, INPUT); // Potentiometer
 
   
 }
@@ -38,13 +42,18 @@ void loop() {
   //       The conditional statements are written for you.
   if (state == 0) {
     // TODO: Things that should happen if the state is "off"
-
+    digitalWrite(5, LOW);
+    digitalWrite(6, HIGH);
+    analogWrite(9, LOW);
     
   }
 
   else if (state == 1) {
     // TODO: Things that should happen if the state is "on"
-
+    digitalWrite(5, HIGH);
+    digitalWrite(6, LOW);
+    int speed = map(analogRead(A0), 0, 1023, 0, 255);
+    analogWrite(9, speed);
     
   }
 
