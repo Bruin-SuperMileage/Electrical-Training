@@ -33,13 +33,13 @@
 
 dht DHT;
 
-#define DHT11_PIN 2
+#define DHT11_PIN 5
 
 // initialize the library with the numbers of the interface pins
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
 //initialize  state
-voltatile bool state = true;
+volatile bool state = true;
 
 int buttonState;
 int buttonPin = 3;
@@ -48,6 +48,7 @@ void state_change()
 {
   //TODO: switch the state of which reading to display
   //state can be set to true or false
+  state = !state;
 }
 
 void setup() {
@@ -55,11 +56,13 @@ void setup() {
   
   //TODO: attach an interrupt to change state when button changes from low to high
   // Use state_change for ISR
-  
+  attachInterrupt(digitalPinToInterrupt(3), state_change, RISING);
+
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
   // Print a message to the LCD.
   lcd.print("Hello, World!");
+  Serial.begin(9600);
   
 }
 
@@ -69,11 +72,21 @@ void loop() {
   lcd.setCursor(0,0);
 
   //Read temperature and humidity
-  //TODO: Read in the temperature and humidity from the sensor
+//  //TODO: Read in the temperature and humidity from the sensor
+//  int chk = DHT.read11(DHT11_PIN);
+//  int temp = DHT.temperature;
+//  Serial.println("chk: " + chk);
+//  int humidity = DHT.humidity;
 
-
-  //TODO: Depending on the state variable, 
-  //print Temperature = value of temperature or print Humidity = value of humidity reading to LCD screen
-  
-  delay(1000);
+//
+//  //TODO: Depending on the state variable, 
+//  //print Temperature = value of temperature or print Humidity = value of humidity reading to LCD screen
+  if (state) {
+    lcd.print("Temperature = " + temp);
+   // Serial.println("T: " + temp);
+  } else {
+    lcd.print("Humidity = " + humidity);
+  //  Serial.println("H: " + humidity);
+  }
+  delay(2000);
 }
