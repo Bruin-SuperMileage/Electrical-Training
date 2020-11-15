@@ -39,7 +39,7 @@ dht DHT;
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
 //initialize  state
-voltatile bool state = true;
+volatile bool state = true;
 
 int buttonState;
 int buttonPin = 3;
