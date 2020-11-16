@@ -95,13 +95,21 @@ void loop() {
   //print Temperature = value of temperature or print Humidity = value of humidity reading to LCD screen
   if (state)
   {
-    lcd.print("Hum = ");
-    lcd.print(temp);
+    
+    if (hum > -999)
+    {
+      lcd.print("Hum = ");
+    lcd.print(hum);
+    }
   }
  else
  {
-  lcd.print("temp = ");
-  lcd.print(hum);
+ 
+  if (temp >-999)
+  {
+    lcd.print("temp = ");
+  lcd.print(temp);
+  }
  }
     
   
