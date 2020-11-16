@@ -6,7 +6,7 @@
 // analog inputs should be the following: 0 - 341, 342 - 682, and 683 - 1023
 
 void setup() {
-  // Anything written after "//" on the same line is a comment in C++
+  // Anything written after "//" on the same line is a comment in C++ //
   
   // Any code you put here (in this function) will only be ran once
   // Typically you want to intialize your variables/IO pins
