@@ -36,7 +36,7 @@ void loop() {
     output = map(val, 0, 341, 0, 255);
     // TODO: Output the mapped PWM onto the LED. LED 2 and LED 3 should be OFF
     //       LED 1 will vary depending on analog input
-    analogWrite(9, val);
+    analogWrite(9, output);
     analogWrite(10, LOW);
     analogWrite(11, LOW);
   }
@@ -47,7 +47,7 @@ void loop() {
     output = map(val, 341, 682, 0, 255);
     //       LED 1 should be fully lit. LED 3 should be off. LED 2 will vary depending on analog input
     analogWrite(9, 255);
-    analogWrite(10, val);
+    analogWrite(10, output);
    analogWrite(11, LOW);
   }
   
@@ -59,6 +59,6 @@ void loop() {
     //       LED 1 and 2 should be fully lit. LED 3 will vary depending on analog output
     analogWrite(9, 255);
     analogWrite(10, 255);
-    analogWrite(11, val);
+    analogWrite(11, output);
   }
 }
