@@ -7,6 +7,7 @@ dht DHT;
 
 volatile bool state = true;
 int buttonPin = 3;
+int loops = 0;
 
 void state_change()
 {
@@ -30,17 +31,18 @@ void setup()
 void loop() 
 {
   DHT.read11(DHT11_PIN);
-  if(state == true)
+  if(state == true && loops % 2 == 0)
   {
     Serial.print("Temperature = ");
-    Serial.println(DHT.temperature);
-    Serial.print("C ");
+    Serial.print(DHT.temperature);
+    Serial.println("C ");
   }
-  else
+  else if(state == false && loops % 2 == 0)
   {
     Serial.print("Humidity = ");
-    Serial.println(DHT.humidity);
-    Serial.print("% ");
+    Serial.print(DHT.humidity);
+    Serial.println("% ");
   }
+  loops++;
   delay(1000);
 }
